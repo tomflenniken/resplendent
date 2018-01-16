@@ -1,0 +1,54 @@
+.board {
+    padding: 20px;
+    font-family: 'Lobster', 'Playball', serif;
+}
+
+.board > div {
+    display: flex;
+    width: fit-content;
+    position: relative;
+}
+
+.board > div > div {
+    flex: 1 1;
+}
+
+svg text {
+    user-select: none;
+    pointer-events: none;
+}
+
+.player-resources-outline {
+    border: 2px solid transparent;
+    position: absolute;
+    width: 100%;
+    height: 68px;
+    bottom: 0;
+}
+
+.highlight {
+    border: 2px solid gray;
+    border-radius: 20px;
+}
+
+.empty {
+    border: 2px dashed gray;
+    border-radius: 50%;
+}
+
+.gem-stack {
+    position: relative;
+}
+
+.card-rows {
+    flex-direction: column;
+}
+
+.card-row {
+    display: flex;
+}
+
+.card {
+    flex: 1 1;
+    margin-left: 10px;
+}
