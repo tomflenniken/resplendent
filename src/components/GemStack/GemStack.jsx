@@ -2,13 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { COLOR_TO_HEX } from '../../constants/colorToHex';
 import OutlinedText from '../OutlinedText/OutlinedText';
+import { TAN } from '../../constants/colorNames';
 
 const GemStack = ({ count, color, selectGemFromStack, position, height }) => {
   function yLocation(index) {
-    // 65
-    // 109
-    // 54 / 7
-
     return 100 - (index * 7);
   }
 
@@ -36,8 +33,11 @@ const GemStack = ({ count, color, selectGemFromStack, position, height }) => {
               <g key={index + '-group'} style={{ position: 'relative' }}>
                 <circle key={index}
                         r='45' cx='50' cy={yLocation(index)}
-                        onClick={handleClick} fill={COLOR_TO_HEX[color]} stroke='black' />
-                <OutlinedText fontSize={40} text={count} x={50} y={yLocation(index) + 15} />
+                        fill={COLOR_TO_HEX[color]} stroke='black' />
+                <circle r="35" cx="50" cy={yLocation(index)} fill={COLOR_TO_HEX[TAN]} />
+                <OutlinedText fontSize={40} text={count} x={50} y={yLocation(index) + 15}
+                              color={COLOR_TO_HEX[color]}/>
+                <circle onClick={handleClick} r="45" cx="50" cy={yLocation(index)} fill="transparent" />
                 {
                   (index < count) &&
                   <circle key={index + '-shadow'}

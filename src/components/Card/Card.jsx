@@ -28,7 +28,7 @@ const Card = ({ id, color, cost, points, selectCard }) => {
         <g name='Banner' y='20'>
           <path d='m0 80 v-60 a20,20 0 0 1 20,-20 h210 a20,20 0 0 1 20,20 v60 z' fill='rgba(255, 255, 255, 0.7)' />
           {
-            points > 0 && <OutlinedText text={points} y={70} x={40} fontSize={80} />
+            points > 0 && <OutlinedText text={points} y={70} x={40} fontSize={80} outline={8} />
           }
           <GemIcon color={color} />
         </g>
@@ -42,7 +42,7 @@ const Card = ({ id, color, cost, points, selectCard }) => {
                         fill={COLOR_TO_HEX[color]} stroke={stroke} />
                 <circle r='21' cx='40' cy={y} fill='white' />
                 <circle r='22' cx='38' cy={y} fill={COLOR_TO_HEX[color]} />
-                <OutlinedText y={y + 14} x={40} fontSize={40} text={cost[color]} />
+                <OutlinedText y={y + 14} x={40} fontSize={40} text={cost[color]} outline={6} />
               </g>
             );
           })

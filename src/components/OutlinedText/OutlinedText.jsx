@@ -1,24 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const OutlinedText = ({ text, x, y, fontSize }) => {
+const OutlinedText = ({ text, x, y, fontSize, outline = 4, color = 'White' }) => {
   return (
     <g>
-      <text x={x - 2} y={y} fill='Black' style={{ fontSize: fontSize + 'px' }} textAnchor="middle">{text}</text>
-      <text x={x + 2} y={y} fill='Black' style={{ fontSize: fontSize + 'px' }} textAnchor="middle">{text}</text>
-      <text x={x} y={y - 2} fill='Black' style={{ fontSize: fontSize + 'px' }} textAnchor="middle">{text}</text>
-      <text x={x} y={y + 2} fill='Black' style={{ fontSize: fontSize + 'px' }} textAnchor="middle">{text}</text>
-      <text x={x - 2} y={y + 2} fill='Black' style={{ fontSize: fontSize + 'px' }} textAnchor="middle">{text}</text>
-      <text x={x + 2} y={y + 2} fill='Black' style={{ fontSize: fontSize + 'px' }} textAnchor="middle">{text}</text>
-      <text x={x - 2} y={y - 2} fill='Black' style={{ fontSize: fontSize + 'px' }} textAnchor="middle">{text}</text>
-      <text x={x + 2} y={y - 2} fill='Black' style={{ fontSize: fontSize + 'px' }} textAnchor="middle">{text}</text>
-      <text x={x} y={y} fill='White' style={{ fontSize: fontSize + 'px' }} textAnchor="middle">{text}</text>
+      <text x={x} y={y} fill={color} style={{ fontSize: fontSize + 'px' }} textAnchor="middle"
+            stroke="Black" strokeWidth={outline}>
+        {text}
+      </text>
+      <text x={x} y={y} fill={color} style={{ fontSize: fontSize + 'px' }} textAnchor="middle">{text}</text>
     </g>
   );
 };
 
 OutlinedText.propTypes = {
-  text: PropTypes.number,
+  color: PropTypes.string,
+  outline: PropTypes.number,
   x: PropTypes.number,
   y: PropTypes.number,
   fontSize: PropTypes.number,
