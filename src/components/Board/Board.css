@@ -18,16 +18,21 @@ svg text {
     pointer-events: none;
 }
 
-.player-resources-outline {
+.player-area-outline {
     border: 2px solid transparent;
-    position: absolute;
     width: 100%;
-    height: 73px;
+    position: absolute;
     bottom: 0;
+    height: 85px;
+    pointer-events: none;
+}
+
+.resources {
+    display: flex;
 }
 
 .highlight {
-    border: 2px solid gray;
+    border: 2px dashed gray;
     border-radius: 20px;
 }
 

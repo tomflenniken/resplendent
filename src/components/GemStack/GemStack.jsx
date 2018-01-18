@@ -17,8 +17,8 @@ const GemStack = ({ count, color, selectGemFromStack, position, height }) => {
   }
 
   return (
-    <div className='gem-stack'>
-      <svg transform="translate(1,-1)" height={height} viewBox='0 0 100 150'>
+    <div className='gem-stack' style={{height: height + 'px', padding: '10px 0 10px 10px'}}>
+      <svg transform='translate(1,-1)' height={height} viewBox='0 0 100 150'>
         {
           [...Array(count + 1)].map((value, index) => {
             if (count === 0) {

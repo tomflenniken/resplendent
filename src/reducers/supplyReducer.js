@@ -2,11 +2,11 @@ import { RETURN_PLAYER_RESOURCE_TO_STACK, SELECT_RESOURCE_FROM_STACK } from '../
 import { BLACK, BLUE, GOLD, GREEN, RED, WHITE } from '../constants/colorNames';
 
 const initialState = {
+  [WHITE]: 3,
   [BLUE]: 3,
   [RED]: 3,
   [GREEN]: 3,
   [BLACK]: 3,
-  [WHITE]: 3,
   [GOLD]: 5,
 };
 

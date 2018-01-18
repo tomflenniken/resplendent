@@ -2,26 +2,15 @@ import React, { Component } from 'react';
 import GemStack from '../GemStack/GemStack';
 import './Board.css';
 import { connect } from 'react-redux';
-import { returnPlayerResourceToStack, selectResourceFromStack } from '../../actions/playerActions';
-import { endTurn } from '../../actions/gameActions';
+import { selectResourceFromStack } from '../../actions/playerActions';
 import CardRows from '../CardRows/CardRows';
+import PlayerAreas from '../PlayerAreas/PlayerAreas';
 
 class Board extends Component {
 
   handleSelectResourceFromStack = (color) => {
     const { actions } = this.props;
     actions.selectResourceFromStack(color, this.props.activePlayer);
-  };
-
-  handleReturnPlayerResourceToStack = (color, position) => {
-    const { actions } = this.props;
-    actions.returnPlayerResourceToStack(color, position);
-  };
-
-  handleClick = (event) => {
-    const { actions } = this.props;
-    event.preventDefault();
-    actions.endTurn(this.props.playersByPosition[this.props.activePlayer].nextPlayer);
   };
 
   createBoardGemStacks() {
@@ -34,42 +23,14 @@ class Board extends Component {
     });
   }
 
-  createPlayerGemStacks(position) {
-    let highlightClass = this.props.activePlayer === position ? "highlight" : "";
-    return (
-      <div key={position + '-resources'}>
-        <div className={'player-resources-outline ' + highlightClass} />
-        {
-          Object.keys(this.props.resourcesByPosition[position]).map((color) => {
-            return (
-              <GemStack key={position + '-' + color + '-resource'}
-                        color={color} position={position}
-                        count={this.props.resourcesByPosition[position][color]}
-                        height='100'
-                        selectGemFromStack={this.handleReturnPlayerResourceToStack} />);
-          })
-        }
-      </div>
-    );
-  }
-
   render() {
     return (
       <div className="board">
         <div>
-          <button onClick={this.handleClick}>
-            End Turn
-          </button>
-        </div>
-        <div>
           {this.createBoardGemStacks()}
         </div>
         <CardRows />
-        {
-          Object.keys(this.props.resourcesByPosition).map((position) => {
-            return this.createPlayerGemStacks(position);
-          })
-        }
+        <PlayerAreas />
       </div>
     );
   }
@@ -86,12 +47,6 @@ const mapDispatchToProps = (dispatch) => {
     actions: {
       selectResourceFromStack: (color, position) => {
         return dispatch(selectResourceFromStack({ color, position }));
-      },
-      returnPlayerResourceToStack: (color, position) => {
-        return dispatch(returnPlayerResourceToStack({ color, position }));
-      },
-      endTurn: (nextPlayer) => {
-        return dispatch(endTurn({ nextPlayer }));
       }
     }
   };

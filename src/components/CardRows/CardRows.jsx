@@ -1,5 +1,5 @@
 import React from 'react';
-import CardRow from '../CardRow/CardRow';
+import CardRow from './CardRow';
 
 const CardRows = () => {
   return (

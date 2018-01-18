@@ -15,7 +15,7 @@ const Card = ({ id, color, cost, points, selectCard }) => {
 
   return (
     <div className='card'>
-      <svg height='150' viewBox='0 0 250 350' style={{ fontSize: '80px' }}>
+      <svg height='200' viewBox='0 0 250 350' style={{ fontSize: '80px' }}>
         <defs>
           <pattern id='img1' patternUnits='userSpaceOnUse' width='250' height='350'>
             <image xlinkHref={background} x='0' y='0' width='250' height='350' />
@@ -42,8 +42,9 @@ const Card = ({ id, color, cost, points, selectCard }) => {
             let stroke = color === WHITE ? 'rgba(0,0,0,.9)' : 'rgba(255,255,255,.9)';
             return (
               <g key={color + '-cost'}>
-                <circle r='25' cx='40' cy={y} strokeWidth='2'
-                        fill={COLOR_TO_HEX[color]} stroke={stroke} />
+                <circle r='25' cx='40' cy={y}
+                        fill={COLOR_TO_HEX[color]}
+                        stroke={stroke} strokeWidth='2' />
                 <circle r='21' cx='40' cy={y} fill='rgba(255,255,255,.9)' />
                 <circle r='22' cx='38' cy={y} fill={COLOR_TO_HEX[color]} />
                 <OutlinedText y={y + 14} x={40} fontSize={40} text={cost[color]} outline={6} />
