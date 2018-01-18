@@ -1,8 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import CardRow from '../CardRow/CardRow';
 
-const CardRows = ({}) => {
+const CardRows = () => {
   return (
     <div className='card-rows'>
       <CardRow rowNumber={2} />
