@@ -14,7 +14,7 @@ const Card = ({ id, color, cost, points, selectCard }) => {
   }
 
   return (
-    <div className='card'>
+    <div className='card' style={{alignSelf: 'flex-end', height: '200px' }}>
       <svg height='200' viewBox='0 0 250 350' style={{ fontSize: '80px' }}>
         <defs>
           <pattern id='img1' patternUnits='userSpaceOnUse' width='250' height='350'>
