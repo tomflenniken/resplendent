@@ -52,6 +52,7 @@ svg text {
 .card-row {
     display: flex;
     margin: 5px;
+    height: 200px;
 }
 
 .card {

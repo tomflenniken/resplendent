@@ -10,7 +10,9 @@ const Card = ({ card, selectCard }) => {
 
   function handleClick(event) {
     event.preventDefault();
-    selectCard(card.id);
+    if (card) {
+      selectCard(card.id);
+    }
   }
 
   return (

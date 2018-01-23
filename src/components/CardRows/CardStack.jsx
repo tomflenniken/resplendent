@@ -29,12 +29,12 @@ const CardStack = ({ count, tier, selectCard }) => {
     }
   }
 
-  let cardDepth = 3;
+  let cardDepth = 1;
   let cardHeight = 200;
   let totalHeight = cardHeight + cardDepth * (count - 1) * cardHeight / 350;
 
   return (
-    <div className='card-stack' style={{ height: totalHeight + 'px' }}>
+    <div className='card-stack' style={{ height: totalHeight + 'px', marginTop: - totalHeight + cardHeight + 'px' }}>
       <svg height={totalHeight} width={cardHeight * 5 / 7} viewBox={'0 0 250 ' + (350 + cardDepth * (count - 1))}
            style={{ fontSize: '80px' }}>
         {
