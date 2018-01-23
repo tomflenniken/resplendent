@@ -6,11 +6,11 @@ import OutlinedText from '../OutlinedText/OutlinedText';
 import { WHITE } from '../../constants/colorNames';
 import GemIcon from '../GemIcon/GemIcon';
 
-const Card = ({ id, card, selectCard }) => {
+const Card = ({ card, selectCard }) => {
 
   function handleClick(event) {
     event.preventDefault();
-    selectCard(id);
+    selectCard(card.id);
   }
 
   return (
@@ -71,10 +71,7 @@ const Card = ({ id, card, selectCard }) => {
 };
 
 Card.propTypes = {
-  id: PropTypes.string,
-  color: PropTypes.string,
-  cost: PropTypes.object,
-  points: PropTypes.number,
+  card: PropTypes.object,
   selectCard: PropTypes.func,
 };
 

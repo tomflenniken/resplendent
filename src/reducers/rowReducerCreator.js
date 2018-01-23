@@ -23,7 +23,7 @@ export function createRowReducer(rowNumber) {
           return value === payload.card;
         });
 
-        if (index > 0) {
+        if (index >= 0) {
           let newState = [
             ...state
           ];
