@@ -25,7 +25,7 @@ const CardStack = ({ count, tier, selectCard }) => {
   function handleClick(event) {
     event.preventDefault();
     if (!event.target.parentElement.nextSibling) {
-      selectCard(null, tier);
+      selectCard(tier);
     }
   }
 

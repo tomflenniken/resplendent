@@ -21,13 +21,22 @@ export const returnPlayerResourceToStack = ({ color, position }) => {
 };
 
 export const SELECT_CARD = 'SELECT_CARD';
-export const selectCard = ({ card, row, slot }) => {
+export const selectCard = ({ card }) => {
   return {
     type: SELECT_CARD,
     payload: {
-      card,
-      row,
-      slot
+      card
     },
   };
 };
+
+export const DRAW_CARD = 'DRAW_CARD';
+export const drawCard = ({ card }) => {
+  return {
+    type: DRAW_CARD,
+    payload: {
+      card
+    },
+  };
+};
+

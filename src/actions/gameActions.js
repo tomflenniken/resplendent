@@ -7,3 +7,12 @@ export const endTurn = ({ nextPlayer }) => {
     },
   };
 };
+
+export const START = 'START';
+export const start = () => {
+  return {
+    type: START,
+    payload: {
+    },
+  };
+};

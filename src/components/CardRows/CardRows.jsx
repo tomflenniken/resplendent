@@ -1,38 +1,34 @@
 import React, { Component } from 'react';
 import CardRow from './CardRow';
 import { connect } from 'react-redux';
-import { selectCard } from '../../actions/playerActions';
+import { drawCard, selectCard } from '../../actions/playerActions';
+import { sample } from 'lodash';
 
 class CardRows extends Component {
-  handleSelectCard = (card, row, slot) => {
+  handleSelectCard = (id) => {
     const { actions } = this.props;
-    actions.selectCard(card, row, slot);
+    if (typeof id === 'number') {
+      actions.drawCard(sample(this.props['deck' + id]).id);
+    } else {
+      actions.selectCard(id);
+    }
   };
 
   render() {
     return (
       <div className='card-rows'>
         <CardRow rowNumber={2}
-                 slot0={this.props.cards[2][0]}
-                 slot1={this.props.cards[2][1]}
-                 slot2={this.props.cards[2][2]}
-                 slot3={this.props.cards[2][3]}
-                 deck={[1, 2, 3, 4]}
+                 row={this.props.row2}
+                 deck={this.props.deck2}
                  selectCard={this.handleSelectCard}/>
         <CardRow rowNumber={1}
-                 slot0={this.props.cards[1][0]}
-                 slot1={this.props.cards[1][1]}
-                 slot2={this.props.cards[1][2]}
-                 slot3={this.props.cards[1][3]}
-                 deck={[1, 2]}
-                 selectCard={this.handleSelectCard} />
+                 row={this.props.row1}
+                 deck={this.props.deck1}
+                 selectCard={this.handleSelectCard}/>
         <CardRow rowNumber={0}
-                 slot0={this.props.cards[0][0]}
-                 slot1={this.props.cards[0][1]}
-                 slot2={this.props.cards[0][2]}
-                 slot3={this.props.cards[0][3]}
-                 deck={[1, 2, 3, 4, 5, 6, 7, 8, 9, 0]}
-                 selectCard={this.handleSelectCard} />
+                 row={this.props.row0}
+                 deck={this.props.deck0}
+                 selectCard={this.handleSelectCard}/>
       </div>
     );
   }
@@ -40,34 +36,23 @@ class CardRows extends Component {
 
 const mapStateToProps = (state) => {
   return ({
-    cards: [
-      {
-        0: state.cards[0][0],
-        1: state.cards[0][1],
-        2: state.cards[0][2],
-        3: state.cards[0][3],
-      },
-      {
-        0: state.cards[1][0],
-        1: state.cards[1][1],
-        2: state.cards[1][2],
-        3: state.cards[1][3],
-      },
-      {
-        0: state.cards[2][0],
-        1: state.cards[2][1],
-        2: state.cards[2][2],
-        3: state.cards[2][3],
-      }
-    ]
+    row0: state.row0,
+    row1: state.row1,
+    row2: state.row2,
+    deck0: state.deck0,
+    deck1: state.deck1,
+    deck2: state.deck2,
   });
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     actions: {
-      selectCard: (card, row, slot) => {
-        return dispatch(selectCard({ card, row, slot }));
+      selectCard: (card) => {
+        return dispatch(selectCard({ card }));
+      },
+      drawCard: (card, row) => {
+        return dispatch(drawCard({ card, row }));
       }
     }
   };
