@@ -1,33 +1,76 @@
-import React from 'react';
+import React, { Component } from 'react';
 import CardRow from './CardRow';
-import { BLACK, BLUE, GREEN, RED, WHITE } from '../../constants/colorNames';
+import { connect } from 'react-redux';
+import { selectCard } from '../../actions/playerActions';
 
-const CardRows = () => {
-  return (
-    <div className='card-rows'>
-      <CardRow rowNumber={2}
-               slot1={{color: WHITE, points: 4, cost: {[BLACK]: 7}}}
-               slot2={{color: BLUE, points: 3, cost: { [WHITE]: 3, [GREEN]: 3, [RED]: 3, [BLACK]: 5 }}}
-               slot3={{color: BLACK, points: 4, cost: { [GREEN]: 3, [RED]: 6, [BLACK]: 3 }}}
-               slot4={{color: RED, points: 3, cost: { [WHITE]: 3, [BLUE]: 5, [GREEN]: 3, [BLACK]: 3 }}}
-               deck={[1,2,3,4]} />
-      <CardRow rowNumber={1}
-               slot1={{color: WHITE, points: 2, cost: { [RED]: 5 }}}
-               slot2={{color: BLACK, points: 1, cost: { [WHITE]: 3, [GREEN]: 3, [BLACK]: 2 }}}
-               slot3={{color: BLUE,  points: 2, cost: { [WHITE]: 2, [RED]: 1, [BLACK]: 4 }}}
-               slot4={{color: GREEN, points: 2, cost: { [BLUE]: 5, [GREEN]: 3 }}}
-               deck={[1,2]} />
-      <CardRow rowNumber={0}
-               slot1={{color: WHITE, points: 0, cost: { [BLUE]: 1, [GREEN]: 1, [RED]: 1, [BLACK]: 1 }}}
-               slot2={{color: BLUE,  points: 0, cost: { [WHITE]: 1, [GREEN]: 1, [RED]: 1, [BLACK]: 1 }}}
-               slot3={{color: BLACK, points: 0, cost: { [WHITE]: 1, [BLUE]: 1, [GREEN]: 1, [RED]: 1 }}}
-               slot4={{color: GREEN, points: 0, cost: { [BLUE]: 2, [RED]: 2 }}}
-               deck={[1,2,3,4,5,6,7,8,9,0]} />
-    </div>
-  );
+class CardRows extends Component {
+  handleSelectCard = (card, row, slot) => {
+    const { actions } = this.props;
+    actions.selectCard(card, row, slot);
+  };
+
+  render() {
+    return (
+      <div className='card-rows'>
+        <CardRow rowNumber={2}
+                 slot0={this.props.cards[2][0]}
+                 slot1={this.props.cards[2][1]}
+                 slot2={this.props.cards[2][2]}
+                 slot3={this.props.cards[2][3]}
+                 deck={[1, 2, 3, 4]}
+                 selectCard={this.handleSelectCard}/>
+        <CardRow rowNumber={1}
+                 slot0={this.props.cards[1][0]}
+                 slot1={this.props.cards[1][1]}
+                 slot2={this.props.cards[1][2]}
+                 slot3={this.props.cards[1][3]}
+                 deck={[1, 2]}
+                 selectCard={this.handleSelectCard} />
+        <CardRow rowNumber={0}
+                 slot0={this.props.cards[0][0]}
+                 slot1={this.props.cards[0][1]}
+                 slot2={this.props.cards[0][2]}
+                 slot3={this.props.cards[0][3]}
+                 deck={[1, 2, 3, 4, 5, 6, 7, 8, 9, 0]}
+                 selectCard={this.handleSelectCard} />
+      </div>
+    );
+  }
+}
+
+const mapStateToProps = (state) => {
+  return ({
+    cards: [
+      {
+        0: state.cards[0][0],
+        1: state.cards[0][1],
+        2: state.cards[0][2],
+        3: state.cards[0][3],
+      },
+      {
+        0: state.cards[1][0],
+        1: state.cards[1][1],
+        2: state.cards[1][2],
+        3: state.cards[1][3],
+      },
+      {
+        0: state.cards[2][0],
+        1: state.cards[2][1],
+        2: state.cards[2][2],
+        3: state.cards[2][3],
+      }
+    ]
+  });
 };
 
-CardRows.propTypes = {
+const mapDispatchToProps = (dispatch) => {
+  return {
+    actions: {
+      selectCard: (card, row, slot) => {
+        return dispatch(selectCard({ card, row, slot }));
+      }
+    }
+  };
 };
 
-export default CardRows;
+export default connect(mapStateToProps, mapDispatchToProps)(CardRows);

@@ -4,6 +4,7 @@ import resourcesByPositionReducer from '../reducers/byPosition/resourcesReducer'
 import playersByPositionReducer from '../reducers/byPosition/playersReducer';
 import positionsReducer from '../reducers/positionsReducer';
 import activePlayerReducer from '../reducers/activePlayerReducer';
+import cardsReducer from '../reducers/cardsReducer';
 
 const store = createStore(
   combineReducers(
@@ -12,7 +13,8 @@ const store = createStore(
       resourcesByPosition: resourcesByPositionReducer,
       playersByPosition: playersByPositionReducer,
       positions: positionsReducer,
-      activePlayer: activePlayerReducer
+      activePlayer: activePlayerReducer,
+      cards: cardsReducer
     },
   )
 );

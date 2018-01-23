@@ -6,11 +6,11 @@ import OutlinedText from '../OutlinedText/OutlinedText';
 import { WHITE } from '../../constants/colorNames';
 import GemIcon from '../GemIcon/GemIcon';
 
-const Card = ({ id, color, cost, points, selectCard }) => {
+const Card = ({ id, slot, color, cost, points, selectCard }) => {
 
   function handleClick(event) {
     event.preventDefault();
-    selectCard(id);
+    selectCard(id, slot);
   }
 
   return (
