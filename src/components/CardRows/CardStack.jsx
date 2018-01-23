@@ -65,7 +65,7 @@ const CardStack = ({ count, tier, selectCard }) => {
                       x="15" y="15"
                       rx='15' ry='15'
                       fill='rgba(0,0,0,.25)' />
-                <OutlinedText text={'Splendor'} fontSize={50} color={GOLD} outline={6} x={125} y={185} />
+                <OutlinedText text={'Resplendent'} fontSize={40} color={GOLD} outline={6} x={125} y={185} />
                 <g transform="translate(125, 315)">
                   {
                     [...Array(tier + 1)].map((value, index) => {
