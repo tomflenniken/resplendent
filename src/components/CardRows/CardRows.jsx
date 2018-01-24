@@ -3,14 +3,25 @@ import CardRow from './CardRow';
 import { connect } from 'react-redux';
 import { drawCard, selectCard } from '../../actions/playerActions';
 import { sample } from 'lodash';
+import { CARD_DEFINITIONS_BY_ID } from '../../constants/cardDefintions';
 
 class CardRows extends Component {
   handleSelectCard = (id) => {
     const { actions } = this.props;
     if (typeof id === 'number') {
-      actions.drawCard(sample(this.props['deck' + id]).id);
+      let sampledCard = sample(this.props['deck' + id]);
+      if (sampledCard) {
+        actions.drawCard(sampledCard);
+      }
     } else {
-      actions.selectCard(id);
+      let tier = CARD_DEFINITIONS_BY_ID[id].tier;
+      let replacement = sample(this.props['deck' + tier]);
+      if (replacement) {
+        actions.drawCard(replacement);
+        actions.selectCard(id, replacement);
+      } else {
+        actions.selectCard(id)
+      }
     }
   };
 
@@ -48,8 +59,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     actions: {
-      selectCard: (card) => {
-        return dispatch(selectCard({ card }));
+      selectCard: (card, replacement) => {
+        return dispatch(selectCard({ card, replacement }));
       },
       drawCard: (card, row) => {
         return dispatch(drawCard({ card, row }));

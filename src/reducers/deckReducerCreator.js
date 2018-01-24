@@ -1,11 +1,7 @@
-import { DRAW_CARD} from '../actions/playerActions';
-import { CARD_DEFINITIONS, CARD_DEFINITIONS_BY_ID } from '../constants/cardDefintions';
+import { DRAW_CARD } from '../actions/playerActions';
+import { CARD_DEFINITIONS_BY_ID } from '../constants/cardDefintions';
 
-export function createDeckReducer(rowNumber) {
-  const initialState = CARD_DEFINITIONS.filter((value) => {
-    return value.tier === rowNumber;
-  });
-
+export function createDeckReducer(rowNumber, initialState) {
   return (state = initialState, { type, payload }) => {
     switch (type) {
       case DRAW_CARD:
@@ -13,7 +9,7 @@ export function createDeckReducer(rowNumber) {
         if (card.tier === rowNumber) {
           return [
             ...state.filter((value) => {
-              return value.id !== card.id;
+              return value !== card.id;
             })
           ];
         }
