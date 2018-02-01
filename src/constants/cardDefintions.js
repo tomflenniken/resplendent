@@ -1,4 +1,4 @@
-import { BLACK, BLUE, GREEN, RED, WHITE } from '../constants/colorNames';
+import { BLACK, BLUE, GREEN, RED, WHITE } from './colorNames';
 
 let K = BLACK, B = BLUE, G = GREEN, R = RED, W = WHITE;
 

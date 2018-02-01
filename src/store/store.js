@@ -2,6 +2,7 @@ import { combineReducers, createStore } from 'redux';
 import supplyReducer from '../reducers/supplyReducer';
 import resourcesByPositionReducer from '../reducers/byPosition/resourcesReducer';
 import playersByPositionReducer from '../reducers/byPosition/playersReducer';
+import cardsByPositionReducer from '../reducers/byPosition/cardsReducer';
 import positionsReducer from '../reducers/positionsReducer';
 import activePlayerReducer from '../reducers/activePlayerReducer';
 import { createRowReducer } from '../reducers/rowReducerCreator';
@@ -47,6 +48,7 @@ const store = createStore(
       supply: supplyReducer,
       resourcesByPosition: resourcesByPositionReducer,
       playersByPosition: playersByPositionReducer,
+      cardsByPosition: cardsByPositionReducer,
       positions: positionsReducer,
       activePlayer: activePlayerReducer,
       row0: createRowReducer(initialRow0),

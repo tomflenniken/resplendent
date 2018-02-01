@@ -10,9 +10,13 @@ const initialState = {
 export default (state = initialState, { type, payload }) => {
   switch (type) {
     case SELECT_CARD:
-      return [
-        ...state
-      ];
+      return {
+        ...state,
+        [payload.position]: [
+          ...state[payload.position],
+          payload.card
+        ]
+      };
     default:
       return state;
   }

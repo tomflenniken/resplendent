@@ -11,16 +11,16 @@ class CardRows extends Component {
     if (typeof id === 'number') {
       let sampledCard = sample(this.props['deck' + id]);
       if (sampledCard) {
-        actions.drawCard(sampledCard);
+        actions.drawCard(this.props.activePlayer, sampledCard);
       }
     } else {
       let tier = CARD_DEFINITIONS_BY_ID[id].tier;
       let replacement = sample(this.props['deck' + tier]);
       if (replacement) {
-        actions.drawCard(replacement);
-        actions.selectCard(id, replacement);
+        actions.drawCard(this.props.activePlayer, replacement);
+        actions.selectCard(this.props.activePlayer, id, replacement);
       } else {
-        actions.selectCard(id)
+        actions.selectCard(this.props.activePlayer, id)
       }
     }
   };
@@ -47,6 +47,7 @@ class CardRows extends Component {
 
 const mapStateToProps = (state) => {
   return ({
+    activePlayer: state.activePlayer,
     row0: state.row0,
     row1: state.row1,
     row2: state.row2,
@@ -59,11 +60,11 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     actions: {
-      selectCard: (card, replacement) => {
-        return dispatch(selectCard({ card, replacement }));
+      selectCard: (position, card, replacement) => {
+        return dispatch(selectCard({ position, card, replacement }));
       },
-      drawCard: (card, row) => {
-        return dispatch(drawCard({ card, row }));
+      drawCard: (position, card, row) => {
+        return dispatch(drawCard({ position, card, row }));
       }
     }
   };

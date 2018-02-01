@@ -23,6 +23,7 @@ class PlayerAreas extends Component {
                     position={position} active={this.props.activePlayer === position}
                     player={this.props.playersByPosition[position]}
                     resources={this.props.resourcesByPosition[position]}
+                    cards={this.props.cardsByPosition[position]}
                     returnPlayerResourceToStack={this.handleReturnPlayerResourceToStack}
                     endTurn={this.handleEndTurn} />
       );
@@ -36,6 +37,7 @@ const mapStateToProps = (state) => {
     positions: state.positions,
     playersByPosition: state.playersByPosition,
     resourcesByPosition: state.resourcesByPosition,
+    cardsByPosition: state.cardsByPosition,
   });
 };
 

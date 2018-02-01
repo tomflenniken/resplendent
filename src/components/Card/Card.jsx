@@ -6,18 +6,18 @@ import OutlinedText from '../OutlinedText/OutlinedText';
 import { WHITE } from '../../constants/colorNames';
 import GemIcon from '../GemIcon/GemIcon';
 
-const Card = ({ card, selectCard }) => {
+const Card = ({ card, height=200, selectCard }) => {
 
   function handleClick(event) {
     event.preventDefault();
-    if (card) {
+    if (card && selectCard) {
       selectCard(card.id);
     }
   }
 
   return (
-    <div className='card' style={{ alignSelf: 'flex-end', height: '200px' }}>
-      <svg height='200' viewBox='0 0 250 350' style={{ fontSize: '80px' }}>
+    <div className='card' style={{ alignSelf: 'flex-end', height: height + 'px' }}>
+      <svg height={height} viewBox='0 0 250 350' style={{ fontSize: '80px' }}>
         {
           card &&
           <g>
