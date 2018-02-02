@@ -5,7 +5,8 @@ import { CARD_DEFINITIONS_BY_ID } from '../../constants/cardDefintions';
 
 const PlayerCardContainer = ({ cards }) => {
   return (
-    <div style={{ flex: '1 1' }}>
+    cards.length > 0 &&
+    <div style={{ flex: '1 1', height: 22 * (cards.length - 1) + 100 + 'px' }}>
       {
         cards.map((card, index) => {
           return (

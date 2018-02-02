@@ -16,45 +16,47 @@ const PlayerArea = ({ position, active, player, resources, cards, returnPlayerRe
 
   return (
     <div key={position + '-area'}>
-      <div className={'player-area-outline ' + highlightClass} />
-      <div>
-        <div className={'resources'}>
-          {
+      <div className={'player-area-outline ' + highlightClass}>
+        <div>
+          <div className={'resources'}>
+            {
 
-            Object.keys(resources).map((color) => {
-              return (
-                <GemStack key={position + '-' + color + '-resource'}
-                          color={color} position={position}
-                          count={resources[color]}
-                          height='100'
-                          selectGemFromStack={returnPlayerResourceToStack} />);
-            })
-          }
+              Object.keys(resources).map((color) => {
+                return (
+                  <GemStack key={position + '-' + color + '-resource'}
+                            color={color} position={position}
+                            count={resources[color]}
+                            height='100'
+                            selectGemFromStack={returnPlayerResourceToStack} />
+                );
+              })
+            }
+          </div>
+          <div className={'cards'} style={{ display: 'flex' }}>
+            {
+              CARD_COLORS.map((color) => {
+                return (
+                  <PlayerCardContainer key={color + '-cards'} cards={
+                    cards.filter((card) => {
+                      return CARD_DEFINITIONS_BY_ID[card].color === color;
+                    })
+                  } />
+                );
+              })
+            }
+          </div>
         </div>
-        <div className={'cards'} style={{ display: 'flex' }}>
+        <div style={{ height: '70px', alignSelf: 'flex-end', padding: '10px' }}>
+          <div style={{ textAlign: 'left' }}>
+            {player.nickname}
+          </div>
           {
-            CARD_COLORS.map((color) => {
-              return (
-                <PlayerCardContainer key={color + '-cards'} cards={
-                  cards.filter((card) => {
-                    return CARD_DEFINITIONS_BY_ID[card].color === color;
-                  })
-                } />
-              );
-            })
+            active &&
+            <button onClick={handleClick}>
+              End Turn
+            </button>
           }
         </div>
-      </div>
-      <div style={{ height: '70px', alignSelf: 'flex-end', padding: '10px' }}>
-        <div style={{ textAlign: 'left' }}>
-          {player.nickname}
-        </div>
-        {
-          active &&
-          <button onClick={handleClick}>
-            End Turn
-          </button>
-        }
       </div>
     </div>
   );

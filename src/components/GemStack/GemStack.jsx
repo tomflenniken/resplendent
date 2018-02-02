@@ -17,7 +17,7 @@ const GemStack = ({ count, color, selectGemFromStack, position, height }) => {
   }
 
   return (
-    <div className='gem-stack' style={{height: height + 'px', padding: '10px 0 10px 10px'}}>
+    <div className='gem-stack' style={{ height: height + 'px' }}>
       <svg transform='translate(1,-1)' height={height} viewBox='0 0 100 150'>
         {
           [...Array(count + 1)].map((value, index) => {
@@ -39,7 +39,7 @@ const GemStack = ({ count, color, selectGemFromStack, position, height }) => {
                         fill='none' stroke='rgba(0,0,0,.5)' />
                 <circle r='40' cx='50' cy={yLocation(index)} fill={COLOR_TO_HEX[TAN]} />
                 <OutlinedText fontSize={40} text={count} x={50} y={yLocation(index) + 15}
-                              color={COLOR_TO_HEX[color]}/>
+                              color={COLOR_TO_HEX[color]} />
                 <circle onClick={handleClick} r='49' cx='50' cy={yLocation(index)} fill='transparent' />
                 {
                   (index < count) &&

@@ -20,15 +20,11 @@ svg text {
 
 .player-area-outline {
     border: 2px solid transparent;
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    height: 85px;
-    pointer-events: none;
 }
 
 .resources {
     display: flex;
+    margin-top: -30px;
 }
 
 .highlight {
@@ -43,6 +39,11 @@ svg text {
 
 .gem-stack {
     position: relative;
+    padding: 10px 0 10px 10px;
+}
+
+.gem-stack:last-child {
+    padding: 10px;
 }
 
 .card-rows {
