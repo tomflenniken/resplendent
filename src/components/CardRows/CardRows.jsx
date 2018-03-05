@@ -20,7 +20,7 @@ class CardRows extends Component {
         actions.drawCard(this.props.activePlayer, replacement);
         actions.selectCard(this.props.activePlayer, id, replacement);
       } else {
-        actions.selectCard(this.props.activePlayer, id)
+        actions.selectCard(this.props.activePlayer, id);
       }
     }
   };
@@ -31,15 +31,15 @@ class CardRows extends Component {
         <CardRow rowNumber={2}
                  row={this.props.row2}
                  deck={this.props.deck2}
-                 selectCard={this.handleSelectCard}/>
+                 selectCard={this.handleSelectCard} />
         <CardRow rowNumber={1}
                  row={this.props.row1}
                  deck={this.props.deck1}
-                 selectCard={this.handleSelectCard}/>
+                 selectCard={this.handleSelectCard} />
         <CardRow rowNumber={0}
                  row={this.props.row0}
                  deck={this.props.deck0}
-                 selectCard={this.handleSelectCard}/>
+                 selectCard={this.handleSelectCard} />
       </div>
     );
   }

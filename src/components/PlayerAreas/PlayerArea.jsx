@@ -4,8 +4,10 @@ import GemStack from '../GemStack/GemStack';
 import PlayerCardContainer from './PlayerCardContainer';
 import CARD_COLORS from '../../constants/cardColors';
 import { CARD_DEFINITIONS_BY_ID } from '../../constants/cardDefintions';
+import { NOBLE_DEFINITIONS_BY_ID } from '../../constants/nobleDefintions';
+import Noble from '../Noble/Noble';
 
-const PlayerArea = ({ position, active, player, resources, cards, returnPlayerResourceToStack, endTurn }) => {
+const PlayerArea = ({ position, active, player, resources, cards, nobles, returnPlayerResourceToStack, endTurn }) => {
   let highlightClass = active ? 'highlight' : '';
 
   function handleClick(event) {
@@ -18,7 +20,18 @@ const PlayerArea = ({ position, active, player, resources, cards, returnPlayerRe
     <div key={position + '-area'}>
       <div className={'player-area-outline ' + highlightClass}>
         <div>
-          <div className={'resources'}>
+          <div className='nobles' style={{ display: 'flex', margin: '10px 10px 10px 0'}}>
+            {
+
+              nobles.map((noble) => {
+                console.log(noble);
+                return (
+                  <Noble key={position + '-' + noble} noble={NOBLE_DEFINITIONS_BY_ID[noble]} height='100' />
+                );
+              })
+            }
+          </div>
+          <div className='resources'>
             {
 
               Object.keys(resources).map((color) => {
@@ -32,7 +45,7 @@ const PlayerArea = ({ position, active, player, resources, cards, returnPlayerRe
               })
             }
           </div>
-          <div className={'cards'} style={{ display: 'flex' }}>
+          <div className='cards' style={{ display: 'flex' }}>
             {
               CARD_COLORS.map((color) => {
                 return (
@@ -68,6 +81,7 @@ PlayerArea.propTypes = {
   player: PropTypes.object,
   resources: PropTypes.object,
   cards: PropTypes.array,
+  nobles: PropTypes.array,
   returnPlayerResourceToStack: PropTypes.func
 };
 

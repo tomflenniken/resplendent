@@ -25,7 +25,7 @@ const Card = ({ card, height=200, selectCard }) => {
               <pattern id={'img' + card.id} patternUnits='userSpaceOnUse' width='250' height='350'>
                 <image xlinkHref={background} x='0' y='0' width='250' height='350' />
               </pattern>
-              <linearGradient id={'gradient' + card.id} x1="0%" y1="0%" x2="0%" y2="100%">
+              <linearGradient id={'gradient' + card.id} x1="0%" y1="0%" x2="100%" y2="0%">
                 <stop offset="0%" style={{ stopColor: COLOR_TO_HEX[card.color], stopOpacity: 0 }} />
                 <stop offset="100%" style={{ stopColor: COLOR_TO_HEX[card.color], stopOpacity: 1 }} />
               </linearGradient>

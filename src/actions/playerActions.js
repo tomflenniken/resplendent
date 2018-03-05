@@ -43,3 +43,14 @@ export const drawCard = ({ position, card }) => {
   };
 };
 
+export const SELECT_NOBLE = 'SELECT_NOBLE';
+export const selectNoble = ({ position, noble }) => {
+  return {
+    type: SELECT_NOBLE,
+    payload: {
+      position,
+      noble
+    },
+  };
+};
+

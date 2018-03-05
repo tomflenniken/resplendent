@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { selectResourceFromStack } from '../../actions/playerActions';
 import CardRows from '../CardRows/CardRows';
 import PlayerAreas from '../PlayerAreas/PlayerAreas';
+import Nobles from '../Nobles'
 
 class Board extends Component {
 
@@ -26,6 +27,7 @@ class Board extends Component {
   render() {
     return (
       <div className="board">
+        <Nobles />
         <div>
           {this.createBoardGemStacks()}
         </div>
