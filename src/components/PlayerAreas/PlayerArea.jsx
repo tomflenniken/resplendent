@@ -17,10 +17,10 @@ const PlayerArea = ({ position, active, player, resources, cards, nobles, return
 
 
   return (
-    <div key={position + '-area'}>
+    <div key={position + '-area'} className="flex-container" >
       <div className={'player-area-outline ' + highlightClass}>
         <div>
-          <div className='nobles' style={{ display: 'flex', margin: '10px 10px 10px 0'}}>
+          <div className='nobles' style={{ display: 'flex' }}>
             {
 
               nobles.map((noble) => {

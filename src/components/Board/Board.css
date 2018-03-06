@@ -1,16 +1,15 @@
-.board {
-    padding: 20px;
+* {
     font-family: 'Overlock', serif;
 }
 
-.board > div {
+.board {
+    padding: 20px;
+}
+
+.flex-container {
     display: flex;
     width: fit-content;
     position: relative;
-}
-
-.board > div > div {
-    flex: 1 1;
 }
 
 svg text {
@@ -63,5 +62,4 @@ svg text {
 
 .noble {
     flex: 1 1;
-    margin-left: 10px;
 }

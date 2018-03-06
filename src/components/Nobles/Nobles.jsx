@@ -11,10 +11,10 @@ class Nobles extends Component {
   };
 
   render() {
-    let height = 180;
+    let height = 140;
 
     return (
-      <div style={{ alignSelf: 'flex-end', height: height + 'px' }}>
+      <div className="flex-container" style={{ height: height }}>
         {
           this.props.nobles.map((noble, index) => {
             return noble ?

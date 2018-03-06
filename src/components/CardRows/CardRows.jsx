@@ -27,7 +27,7 @@ class CardRows extends Component {
 
   render() {
     return (
-      <div className='card-rows'>
+      <div className='card-rows flex-container'>
         <CardRow rowNumber={2}
                  row={this.props.row2}
                  deck={this.props.deck2}
