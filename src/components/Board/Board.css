@@ -62,4 +62,9 @@ svg text {
 
 .noble {
     flex: 1 1;
+    margin-right: 10px;
+}
+
+.noble:last-child {
+    margin-right: 0;
 }

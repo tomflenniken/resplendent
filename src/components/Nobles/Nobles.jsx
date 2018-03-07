@@ -11,22 +11,31 @@ class Nobles extends Component {
   };
 
   render() {
-    let height = 140;
+    let sideLength = 140;
+    let arcLength = 10;
 
     return (
-      <div className="flex-container" style={{ height: height }}>
+      <div className="flex-container" style={{ height: sideLength }}>
         {
           this.props.nobles.map((noble, index) => {
             return noble ?
-              <Noble key={'noble-' + index} height={height}
+              <Noble key={'noble-' + index} height={sideLength}
                      noble={NOBLE_DEFINITIONS_BY_ID[noble]} selectNoble={this.handleSelectNoble} /> :
               <div key={'noble-' + index} className="noble">
-                <svg height={height} viewBox='0 0 250 250' style={{ fontSize: '80px' }}>
-                  <path d='M22, 249 a-20 -20, 0, 0, 1, -20 -20 v-208 a20,20 0 0 1 20,-20
-                 h207 a20,20 0 0 1 20,20 v208 a-20 20, 1, 0, 1, -20 20 z  '
+                <svg height={sideLength} viewBox={`0 0 ${sideLength} ${sideLength}`}>
+                  <path d={
+                    `M${arcLength + 1}, ${sideLength - 1}
+                    a-${arcLength} -${arcLength}, 0, 0, 1, -${arcLength} -${arcLength}
+                    v-${sideLength - 2 * arcLength - 2}
+                    a${arcLength},${arcLength} 0 0 1 ${arcLength},-${arcLength}
+                    h${sideLength - 2 * arcLength - 2}
+                    a${arcLength},${arcLength} 0 0 1 ${arcLength},${arcLength}
+                    v${sideLength - 2 * arcLength - 2}
+                    a-${arcLength} ${arcLength}, 1, 0, 1, -${arcLength} ${arcLength}
+                    z`
+                  }
                         fill='transparent'
-                        stroke='rgba(0,0,0,.9)' strokeWidth='2' strokeDasharray={noble ? 'none' : '8 4'} />
-
+                        stroke='rgba(0,0,0,.5)' strokeWidth='2' strokeDasharray={noble ? 'none' : '8 4'} />
                 </svg>
               </div>;
           })

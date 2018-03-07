@@ -14,42 +14,70 @@ const Noble = ({ noble, height = 200, selectNoble }) => {
     }
   }
 
+  let sideLength = 140;
+  let bannerWidth = 30;
+  let arcLength = 10;
+  let pointsSize = 40;
+
   return (
     <div className='noble' style={{ alignSelf: 'flex-end', height: height + 'px' }}>
-      <svg height={height} viewBox='0 0 250 250' style={{ fontSize: '80px' }}>
+      <svg height={height} viewBox={`0 0 ${sideLength} ${sideLength}`} style={{ fontSize: '50px' }}>
         <g>
           <defs>
-            <pattern id={'img' + noble.id} patternUnits='userSpaceOnUse' width='250' height='250'>
-              <image xlinkHref={background} x='0' y='0' width='250' height='250' />
+            <pattern id={'img' + noble.id} patternUnits='userSpaceOnUse' width={sideLength} height={sideLength}>
+              <image xlinkHref={background} x='0' y='0' width={sideLength} height={sideLength} />
             </pattern>
           </defs>
-          <rect width='250' height='250' rx='20' ry='20'
+          <rect width={sideLength} height={sideLength} rx={arcLength} ry={arcLength}
                 fill={'url(#img' + noble.id + ')'} />
-          <g name='Banner' y='20'>
-            <path d='m0 230 v-210 a20,20 0 0 1 20,-20 h60 v250 h-60 a-20,-20 0 0 1 -20,-20 z'
+          <g name='Banner' y='0'>
+            <path d={
+              `m0 ${sideLength - arcLength - 1} v-${sideLength - 2 * arcLength - 2}
+              a${arcLength},${arcLength} 0 0 1 ${arcLength},-${arcLength}
+              h${bannerWidth - arcLength} v${sideLength - 2}
+              h-${bannerWidth - arcLength}
+              a-${arcLength},-${arcLength} 0 0 1 -${arcLength},-${arcLength}
+              z`
+            }
                   fill='rgba(255, 255, 255, 0.5)' />
             {
-              noble.points > 0 && <OutlinedText text={noble.points} y={65} x={40} fontSize={80} outline={8} />
+              noble.points > 0 && <OutlinedText text={noble.points} y={pointsSize} x='17'
+                                                fontSize={pointsSize} outline={6} />
             }
           </g>
           {
             Object.keys(noble.requirement).filter((color) => {
               return noble.requirement[color] > 0;
             }).map((color, index) => {
-              let y = 215 - 55 * index;
+              let height = 25;
+              let width = Math.ceil(height / 1.4);
+              let yOffset = 5;
+              let xOffset = (bannerWidth - width) / 2;
+              let y = sideLength - height - xOffset - (height + yOffset) * index;
               let stroke = color === WHITE ? 'rgba(0,0,0,.9)' : 'rgba(255,255,255,.9)';
               return (
                 <g key={color + '-requirement'}>
-                  <rect x="23" y={y - 25} height="50" width="35"
+                  <rect x={xOffset} y={y} height={height} width={width}
                         strokeWidth="2" rx="5"
                         fill={COLOR_TO_HEX[color]} stroke={stroke} />
-                  <OutlinedText y={y + 14} x={40} fontSize={40} text={noble.requirement[color]} outline={6} />
+                  <OutlinedText y={y + (height / 2) + 6} x={xOffset + width / 2} fontSize={20}
+                                text={noble.requirement[color]} outline={4} />
                 </g>
               );
             })
           }
-          <path d='M22, 249 a-20 -20, 0, 0, 1, -20 -20 v-208 a20,20 0 0 1 20,-20
-                 h207 a20,20 0 0 1 20,20 v208 a-20 20, 1, 0, 1, -20 20 z'
+
+          <path d={
+            `M${arcLength + 1}, ${sideLength - 1}
+            a-${arcLength} -${arcLength}, 0, 0, 1, -${arcLength} -${arcLength}
+            v-${sideLength - 2 * arcLength - 2}
+            a${arcLength},${arcLength} 0 0 1 ${arcLength},-${arcLength}
+            h${sideLength - 2 * arcLength - 2}
+            a${arcLength},${arcLength} 0 0 1 ${arcLength},${arcLength}
+            v${sideLength - 2 * arcLength - 2}
+            a-${arcLength} ${arcLength}, 1, 0, 1, -${arcLength} ${arcLength}
+            z`
+          }
                 fill='transparent' stroke='rgba(0,0,0,.9)' strokeWidth='2'
                 onClick={handleClick} />
         </g>
