@@ -52,6 +52,7 @@ function pickNobles(playerCount) {
 let { row: initialRow0, deck: initialDeck0 } = pull4(deck0);
 let { row: initialRow1, deck: initialDeck1 } = pull4(deck1);
 let { row: initialRow2, deck: initialDeck2 } = pull4(deck2);
+initialRow2 = [];
 
 let playerCount = 4;
 let initialNobles = pickNobles(playerCount);
