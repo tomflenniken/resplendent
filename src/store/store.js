@@ -3,6 +3,7 @@ import supplyReducer from '../reducers/supplyReducer';
 import resourcesByPositionReducer from '../reducers/byPosition/resourcesReducer';
 import playersByPositionReducer from '../reducers/byPosition/playersReducer';
 import cardsByPositionReducer from '../reducers/byPosition/cardsReducer';
+import reserveByPositionReducer from '../reducers/byPosition/reserveReducer';
 import noblesByPositionReducer from '../reducers/byPosition/noblesReducer';
 import positionsReducer from '../reducers/positionsReducer';
 import activePlayerReducer from '../reducers/activePlayerReducer';
@@ -64,6 +65,7 @@ const store = createStore(
       resourcesByPosition: resourcesByPositionReducer,
       playersByPosition: playersByPositionReducer,
       cardsByPosition: cardsByPositionReducer,
+      reserveByPosition: reserveByPositionReducer,
       noblesByPosition: noblesByPositionReducer,
       positions: positionsReducer,
       activePlayer: activePlayerReducer,

@@ -43,6 +43,17 @@ export const drawCard = ({ position, card }) => {
   };
 };
 
+export const RESERVE_CARD = 'RESERVE_CARD';
+export const reserveCard = ({ position, card }) => {
+  return {
+    type: RESERVE_CARD,
+    payload: {
+      position,
+      card
+    },
+  };
+};
+
 export const SELECT_NOBLE = 'SELECT_NOBLE';
 export const selectNoble = ({ position, noble }) => {
   return {

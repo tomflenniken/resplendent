@@ -8,7 +8,8 @@ import { NOBLE_DEFINITIONS_BY_ID } from '../../constants/nobleDefintions';
 import Noble from '../Noble/Noble';
 import Reserve from './Reserve';
 
-const PlayerArea = ({ position, active, player, resources, cards, nobles, returnPlayerResourceToStack, endTurn }) => {
+const PlayerArea = ({ position, active, player, resources, cards, reserve, nobles, returnPlayerResourceToStack,
+                      endTurn }) => {
   let highlightClass = active ? 'highlight' : '';
 
   function handleClick(event) {
@@ -60,7 +61,7 @@ const PlayerArea = ({ position, active, player, resources, cards, nobles, return
             }
           </div>
           <div className='reserve' style={{ display: 'flex' }}>
-            <Reserve cards={cards} />
+            <Reserve cards={reserve} />
           </div>
         </div>
         <div style={{ height: '70px', alignSelf: 'flex-end', padding: '10px' }}>

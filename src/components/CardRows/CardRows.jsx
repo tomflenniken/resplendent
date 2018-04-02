@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import CardRow from './CardRow';
 import { connect } from 'react-redux';
-import { drawCard, selectCard } from '../../actions/playerActions';
+import { reserveCard, drawCard, selectCard } from '../../actions/playerActions';
 import { sample } from 'lodash';
 import { CARD_DEFINITIONS_BY_ID } from '../../constants/cardDefintions';
 
@@ -12,6 +12,7 @@ class CardRows extends Component {
       let sampledCard = sample(this.props['deck' + id]);
       if (sampledCard) {
         actions.drawCard(this.props.activePlayer, sampledCard);
+        actions.reserveCard(this.props.activePlayer, sampledCard)
       }
     } else {
       let tier = CARD_DEFINITIONS_BY_ID[id].tier;
@@ -63,8 +64,11 @@ const mapDispatchToProps = (dispatch) => {
       selectCard: (position, card, replacement) => {
         return dispatch(selectCard({ position, card, replacement }));
       },
-      drawCard: (position, card, row) => {
-        return dispatch(drawCard({ position, card, row }));
+      drawCard: (position, card) => {
+        return dispatch(drawCard({ position, card }));
+      },
+      reserveCard: (position, card) => {
+        return dispatch(reserveCard({ position, card }));
       }
     }
   };
