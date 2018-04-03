@@ -41,7 +41,7 @@ const Noble = ({ noble, height = 200, selectNoble }) => {
             }
                   fill='rgba(255, 255, 255, 0.5)' />
             {
-              noble.points > 0 && <OutlinedText text={noble.points} y={pointsSize} x='17'
+              noble.points > 0 && <OutlinedText text={noble.points} y={pointsSize} x={17}
                                                 fontSize={pointsSize} outline={5} />
             }
           </g>

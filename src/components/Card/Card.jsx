@@ -26,7 +26,7 @@ const Card = ({ card, height = 200, selectCard }) => {
   let gemMargin = 5;
 
   return (
-    <div className='card' style={{ alignSelf: 'flex-end', height: cardHeight + 'px' }}>
+    <div className='card' style={{ alignSelf: 'flex-end', height: height + 'px' }}>
       <svg height={height} viewBox={`0 0 ${cardWidth} ${cardHeight}`} style={{ fontSize: '80px' }}>
         {
           card &&

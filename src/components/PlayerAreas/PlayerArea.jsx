@@ -60,9 +60,7 @@ const PlayerArea = ({ position, active, player, resources, cards, reserve, noble
               })
             }
           </div>
-          <div className='reserve' style={{ display: 'flex' }}>
-            <Reserve cards={reserve} />
-          </div>
+          <Reserve cards={reserve} />
         </div>
         <div style={{ height: '70px', alignSelf: 'flex-end', padding: '10px' }}>
           <div style={{ textAlign: 'left' }}>
